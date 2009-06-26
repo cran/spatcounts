@@ -22,8 +22,6 @@ function (LogLike1, LogLike2, alpha = 0.05, p = NULL, q = NULL, correction = TRU
         if (nu <= -qnorm(1 - alpha/2)) {
             fav <- 2
         }
-#        dimnames(vuongtab)[1] <- list(c("nu", "Favour model", 
-#            "P-value"))
         rownames(vuongtab) <- c("nu", "Favour model", 
             "P-value")
         vuongtab[1, i] <- as.numeric(formatC(nu, 3, format = "g"))

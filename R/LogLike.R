@@ -14,9 +14,13 @@ function (Yin, fm.X, region, regmodel, thinning = 1, burnin = 1){
     fm.X <- cbind(region, xb)
     regindex <- fm.X[, 1]
     if (is.null(r) & is.null(omega) == TRUE) {
-        n <- length(phi)
+        m <- length(phi)
+	phi <- phi[,burnin:m]
+	ga <- ga[,burnin:m]
+	be <- be[,burnin:m]
+	n <- length(phi)
         nthin <- floor(n/thinning)
-        phi <- phi[, (1:nthin) * thinning]
+        phi <- phi[(1:nthin) * thinning]
         ga <- ga[, (1:nthin) * thinning]
         be <- be[, (1:nthin) * thinning]
         ll <- matrix(NA, dim(y)[1], nthin)
@@ -30,8 +34,12 @@ function (Yin, fm.X, region, regmodel, thinning = 1, burnin = 1){
     }
     if (is.null(r) == FALSE) {
         n <- length(r)
+	r <- r[,burnin:n]
+	ga <- ga[,burnin:n]
+	be <- be[,burnin:n]
+        n <- length(r)
         nthin <- floor(n/thinning)
-        r <- r[, (1:nthin) * thinning]
+        r <- r[(1:nthin) * thinning]
         ga <- ga[, (1:nthin) * thinning]
         be <- be[, (1:nthin) * thinning]
         ll <- matrix(NA, dim(y)[1], nthin)
@@ -45,9 +53,14 @@ function (Yin, fm.X, region, regmodel, thinning = 1, burnin = 1){
     }
     if (is.null(omega) == FALSE) {
         n <- length(phi)
+	phi <- phi[,burnin:n]
+	omega <- omega[,burnin:n]
+	ga <- ga[,burnin:n]
+	be <- be[,burnin:n]
+        n <- length(phi)
         nthin <- floor(n/thinning)
-        phi <- phi[, (1:nthin) * thinning]
-        omega <- omega[, (1:nthin) * thinning]
+        phi <- phi[(1:nthin) * thinning]
+        omega <- omega[(1:nthin) * thinning]
         ga <- ga[, (1:nthin) * thinning]
         be <- be[, (1:nthin) * thinning]
         ll <- matrix(NA, dim(y)[1], nthin)

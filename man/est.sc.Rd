@@ -83,10 +83,13 @@ data(sim.nmat)
 # true parameters for generating this data:
 # beta.true = c(-1, 0.4, 1.5)
 # gamma.true = vector of spatial effects according to the CAR model with mean 0, psi = 3 and sigma = 1
-# range of gamma.true = c(-0.851, 0.8405) 
+# range of gamma.true = c(-0.851, 0.8405)
+
+# run all examples with higher number of iterations if you want to approximate the true parameters
+# properly
 
 poi <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region,
-model="Poi", sim.gmat, sim.nmat, totalit=200)
+model="Poi", sim.gmat, sim.nmat, totalit=10)
 
 # posterior means not considering a burn-in or thinning of iterations
 apply(poi$beta,1,mean)
@@ -94,13 +97,13 @@ apply(poi$gamma,1,mean)
 
 
 # Compare Poisson to different model classes
-nb <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="NB", sim.gmat, sim.nmat, 200)
+nb <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="NB", sim.gmat, sim.nmat, totalit=10)
 
-gp <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="GP", sim.gmat, sim.nmat, 200)
+gp <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="GP", sim.gmat, sim.nmat, totalit=10)
 
-zip <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="ZIP", sim.gmat, sim.nmat, 200)
+zip <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="ZIP", sim.gmat, sim.nmat, totalit=10)
 
-zigp <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="ZIGP", sim.gmat, sim.nmat, 200)
+zigp <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, model="ZIGP", sim.gmat, sim.nmat, totalit=10)
 
 DIC.poi <- DIC(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, poi)
 DIC.nb <- DIC(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, nb)

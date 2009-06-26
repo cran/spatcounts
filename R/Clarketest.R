@@ -26,8 +26,7 @@ function (LogLike1, LogLike2, alpha = 0.05, p = NULL, q = NULL, correction = TRU
                   10^(-4), 3, 4), format = ifelse(p.value < 10^(-4), 
                   "g", "f"))))
         }
-#        dimnames(clarketab)[1] <- list(c("Favour model"))
-        rownames(clarketab) <- "Favour model"
+        rownames(clarketab) <- c("Favour model")
         clarketab[1, i] <- as.numeric(B/n)
     }
     up <- qbinom(0.975, n, 0.5)/n

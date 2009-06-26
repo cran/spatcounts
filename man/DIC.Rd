@@ -41,7 +41,7 @@ data(sim.gmat)
 data(sim.nmat)
 
 poi <- est.sc(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, 
-model="Poi", sim.gmat, sim.nmat, 200)
+model="Poi", sim.gmat, sim.nmat, 3)
 DIC.poi <- DIC(sim.Yin, ~1+sim.fm.X[,1]+sim.fm.X[,2], sim.region, poi)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

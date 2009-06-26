@@ -13,7 +13,7 @@ Fit spatial CAR count regression models using MCMC.
 Package: \tab spatcounts\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2009-06-08\cr
+Date: \tab 2009-06-26\cr
 License: \tab GPL (>= 3)\cr
 LazyLoad: \tab yes\cr
 }
